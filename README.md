@@ -29,14 +29,14 @@ The core of the solution is to think of the numbers not as values to be compared
 
 #### 1. The 555 Timer: An Analog Delay Unit
 
-[cite_start]The heart of each "Array Element" is a **555 timer** configured in **monostable (or "one-shot") mode**[cite: 271, 277]. In this mode, when triggered, the timer outputs a single HIGH pulse for a specific duration. [cite_start]This duration (`T`) is determined by the formula: `T = 1.1 × R × C`[cite: 285].
+The heart of each "Array Element" is a **555 timer** configured in **monostable (or "one-shot") mode**. In this mode, when triggered, the timer outputs a single HIGH pulse for a specific duration. This duration (`T`) is determined by the formula: `T = 1.1 × R × C`.
 
-By keeping the capacitor (`C`) fixed at **100µF**, we can control the time delay simply by changing the resistor (`R`). [cite_start]This allows us to convert any number into a specific time delay[cite: 271, 283].
+By keeping the capacitor (`C`) fixed at **100µF**, we can control the time delay simply by changing the resistor (`R`). This allows us to convert any number into a specific time delay.
 
 ![555 Timer in Monostable Mode](docs/Monostable_oneshot.png)
 
 #### RC Value Table for Delay Generation
-[cite_start]To achieve the desired time delays for our array values, we use a fixed 100µF capacitor and select resistors according to the following table[cite: 283]:
+To achieve the desired time delays for our array values, we use a fixed 100µF capacitor and select resistors according to the following table:
 
 | Target Delay | Resistor Value |
 | :----------: | :------------: |
@@ -50,7 +50,7 @@ By keeping the capacitor (`C`) fixed at **100µF**, we can control the time dela
 
 #### 2. The Full Circuit: A Seven-Way Race
 
-We build seven of these timer circuits—one for each number in the array. [cite_start]A single "Start Button" is wired to the trigger pin of all seven timers[cite: 277]. When the button is pressed, all timers are triggered simultaneously, and the "race" begins.
+We build seven of these timer circuits—one for each number in the array. A single "Start Button" is wired to the trigger pin of all seven timers. When the button is pressed, all timers are triggered simultaneously, and the "race" begins.
 
 ![Full Project Schematic](docs/circuit.png)
 
@@ -76,10 +76,10 @@ Each value in the array is assigned to a physical 555 timer circuit, which is co
 |      8      |     75 kΩ     |            28            |
 
 #### Step 2: The Trigger (T=0)
-The "Start Button" is pressed. All 7 timers start their monostable cycle simultaneously. [cite_start]The Arduino code also starts its internal timer (`millis()`)[cite: 278].
+The "Start Button" is pressed. All 7 timers start their monostable cycle simultaneously. The Arduino code also starts its internal timer (`millis()`).
 
 #### Step 3: Passive Observation (The "Race")
-The Arduino's firmware does nothing but watch the input pins. [cite_start]It doesn't know the values; it only knows which pin changes state and when[cite: 272, 279].
+The Arduino's firmware does nothing but watch the input pins. It doesn't know the values; it only knows which pin changes state and when.
 
 - At **~1 second**, the timer with the 10kΩ resistor finishes its cycle. Pin 22 goes HIGH.
   - **Arduino's Log:** `1st place: Pin 22`.
@@ -89,10 +89,10 @@ The Arduino's firmware does nothing but watch the input pins. [cite_start]It doe
   - **Arduino's Log:** `3rd place: Pin 23`.
 - ...and so on.
 
-This continues until all pins have gone HIGH. [cite_start]The final observed order is stored in an array: `highSignalOrder = [22, 25, 23, 26, 27, 28, 24]`[cite: 281].
+This continues until all pins have gone HIGH. The final observed order is stored in an array: `highSignalOrder = [22, 25, 23, 26, 27, 28, 24]`.
 
 #### Step 4: The Final Display
-The system now has a sorted list of *pins*. The firmware uses this list to control the output LEDs. [cite_start]The first LED blinks, then the second, then the third, and so on, creating a visual representation of the sorted sequence[cite: 282]. [cite_start]The **duration** of each blink is determined by the pulse width measured for its timer, representing the original value[cite: 294].
+The system now has a sorted list of *pins*. The firmware uses this list to control the output LEDs. The first LED blinks, then the second, then the third, and so on, creating a visual representation of the sorted sequence. The **duration** of each blink is determined by the pulse width measured for its timer, representing the original value.
 
 ![Final LED Output Array](docs/output_sorted_led_array.png)
 
