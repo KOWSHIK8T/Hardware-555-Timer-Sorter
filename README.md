@@ -33,7 +33,7 @@ The heart of each "Array Element" is a **555 timer** configured in **monostable 
 
 By keeping the capacitor (`C`) fixed at **100µF**, we can control the time delay simply by changing the resistor (`R`). This allows us to convert any number into a specific time delay.
 
-![555 Timer in Monostable Mode](docs/Monostable_oneshot.png)
+![555 Timer in Monostable Mode](Monostable_oneshot.png)
 
 #### RC Value Table for Delay Generation
 To achieve the desired time delays for our array values, we use a fixed 100µF capacitor and select resistors according to the following table:
@@ -52,7 +52,7 @@ To achieve the desired time delays for our array values, we use a fixed 100µF c
 
 We build seven of these timer circuits—one for each number in the array. A single "Start Button" is wired to the trigger pin of all seven timers. When the button is pressed, all timers are triggered simultaneously, and the "race" begins.
 
-![Full Project Schematic](docs/circuit.png)
+![Full Project Schematic](Circuit.png)
 
 ---
 
@@ -94,7 +94,7 @@ This continues until all pins have gone HIGH. The final observed order is stored
 #### Step 4: The Final Display
 The system now has a sorted list of *pins*. The firmware uses this list to control the output LEDs. The first LED blinks, then the second, then the third, and so on, creating a visual representation of the sorted sequence. The **duration** of each blink is determined by the pulse width measured for its timer, representing the original value.
 
-![Final LED Output Array](docs/output_sorted_led_array.png)
+![Final LED Output Array](output_sorted_led_array.png)
 
 ---
 
