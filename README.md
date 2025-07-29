@@ -13,7 +13,7 @@ Given an array `x = [1, 3, 9, 2, 5, 6, 8]`, sort it without a classical sorter. 
 
 A full video demonstration of the Proteus simulation can be viewed by clicking the thumbnail below.
 
-[![Hardware Sorter Simulation Video](output_sorted_led_array.png)](https://drive.google.com/file/d/1HmgJuh8qzN1FeSFAcoYD7Knws6reGkTU/view?usp=sharing)
+[![Hardware Sorter Simulation Video]](https://drive.google.com/file/d/1HmgJuh8qzN1FeSFAcoYD7Knws6reGkTU/view?usp=sharing)
 
 ---
 
